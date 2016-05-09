@@ -1,0 +1,94 @@
+//------------------------------------------------------------------------------
+//       class definitions.
+//       some stolen from LESS Elements 0.6
+//       by Dmitry Fadeyev
+//       http://lesselements.com
+//       I just converted them to work with SCSS
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+//      remove all 'appearance' from elements
+//      this is NOT covered by autoprefixer
+//-----------------------------------------------------------------------------
+@mixin appearance {
+    appearance: none;
+}
+
+//-----------------------------------------------------------------------------
+//      Clearfix as a mixin
+//-----------------------------------------------------------------------------
+@mixin cf() {
+    &:before,
+    &:after {
+        content: ' ';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+//------------------------------------------------------------------------------
+//       text replacement - newer style.
+//       Hat tip: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+//       split apart the background statement and added 'display'
+//       as an option to allow inline-block, etc
+//-----------------------------------------------------------------------------
+@mixin imgreplace($width, $height, $img, $bgsize: contain, $display: block, $imgpos: 0 0, $imgrepeat: no-repeat, $colour: transparent) {
+    display: $display;
+    text-indent: 110%;
+    white-space: nowrap;
+    overflow: hidden;
+    width: $width;
+    height: $height;
+    background-color: $colour;
+    background-image: url($img);
+    background-position: $imgpos;
+    background-repeat: $imgrepeat;
+    background-size: $bgsize;
+}
+
+//------------------------------------------------------------------------------
+//       placeholder text
+//-----------------------------------------------------------------------------*
+@mixin placeholder($color: $input-color-placeholder) {
+    &:-moz-placeholder            { color: $color; } // Firefox 4-18
+    &::-moz-placeholder           { color: $color; } // Firefox 19+
+    &:-ms-input-placeholder       { color: $color; } // Internet Explorer 10+
+    &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}
+
+//------------------------------------------------------------------------------
+//         Stolen from: http://minimalmonkey.com/sass-triangle-mixin/
+//         and kind of converted from SASS to LESS, then back to SCSS
+//-----------------------------------------------------------------------------
+@mixin arrow($width: 20px, $height: 20px, $color: #000, $direction: down) {
+    width: 0;
+    height: 0;
+
+    @if $direction == down {
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-top: $height solid $color;
+    }
+
+    @if $direction == up {
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-bottom: $height solid $color;
+    }
+
+    @if $direction == left {
+        border-top: $height/2 solid transparent;
+        border-bottom: $height/2 solid transparent;
+        border-right: $width solid $color;
+    }
+
+    @if $direction == right {
+        border-top: $height/2 solid transparent;
+        border-bottom: $height/2 solid transparent;
+        border-left: $width solid $color;
+    }
+}
+

@@ -1,0 +1,40 @@
+//----------------------------------------------------
+//      use if you need to check for things
+//      in JS plugins - more reliable
+//      than window width, etc
+//----------------------------------------------------
+.trigger-size {
+    width: 0;
+    height: 0;
+    display: none;
+
+    @include mq($until: mobileLandscape) {
+        &.mobile {
+            display: block;
+        }
+    }
+
+    @include mq($from: mobileLandscape, $until: tablet) {
+        &.mobile-large {
+            display: block;
+        }
+    }
+
+    @include mq($from: tablet, $until: desktop) {
+        &.tablet {
+            display: block;
+        }
+    }
+
+    @include mq($from: desktop, $until: wide) {
+        &.desktop {
+            display: block;
+        }
+    }
+
+    @include mq($from: wide) {
+        &.desktop-large {
+            display: block;
+        }
+    }
+}

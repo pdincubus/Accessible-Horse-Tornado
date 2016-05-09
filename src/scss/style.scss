@@ -1,0 +1,25 @@
+$mq-responsive: true;
+
+$mq-breakpoints: (
+    mobile:  320px,
+    mobileLandscape: 480px,
+    tablet:  768px,
+    desktop: 1024px,
+    wide:    1400px
+);
+
+@import 'third-party/_mq';
+@import 'third-party/_mixins';
+@import 'third-party/_helpers';
+@import 'third-party/_resetalize';
+
+//start of custom stuff
+@import 'global/_variables';
+@import 'global/_helpers';
+
+//base typography and links styles, global buttons etc
+@import 'global/_base';
+
+//site header and footer
+@import 'global/_header';
+@import 'global/_footer';
