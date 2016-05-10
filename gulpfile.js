@@ -34,13 +34,8 @@ var config = {
             dest: 'dist/'
         },
         javascript: {
-            head:  ['src/js/head/*.js'],
-            general:  [
-                'src/js/general/libs/jquery-2.2.3.min.js',
-                'src/js/general/libs/jQuery-Accessible-Horse-Tornado.js',
-                'src/js/general/general.js'
-            ],
-            dest: 'dist/js'
+            watch: 'src/js/*',
+            src:  ['js/*']
         },
         scss: {
             src: 'src/scss/style.scss',
@@ -117,29 +112,6 @@ function reportToFile(mySelectorList) {
 }
 
 //----------------------------------------------------
-//  scripts
-//----------------------------------------------------
-
-var processJs = function(f, s, d) {
-    return gulp.src(s)
-        .pipe(plugins.plumber({
-            errorHandler: reportError
-        }))
-        .pipe(plugins.sourcemaps.init({ loadMaps: true }))
-        .pipe(plugins.concat(f))
-        .pipe(plugins.if(productionMode, plugins.uglify()))
-        .on('error', reportError)
-        .pipe(plugins.sourcemaps.write('./'))
-        .pipe(gulp.dest(d));
-};
-
-gulp.task('scripts:general', function() {
-    var c = config.paths.javascript;
-
-    processJs('general.js', c.general, c.dest);
-});
-
-//----------------------------------------------------
 //  html
 //----------------------------------------------------
 
@@ -190,6 +162,12 @@ gulp.task('images', function() {
         .pipe(plugins.copy(config.base.dest));
 });
 
+gulp.task('scripts', function() {
+    return gulp.src(config.paths.javascript.src, { cwd: 'src' })
+        .pipe(plugins.changed(config.base.dest))
+        .pipe(plugins.copy(config.base.dest));
+});
+
 //----------------------------------------------------
 //  default task - watch things!
 //----------------------------------------------------
@@ -197,7 +175,7 @@ gulp.task('images', function() {
 gulp.task('default', function() {
     gulp.start('dist');
     gulp.watch(config.paths.scss.watch, ['scss']);
-    gulp.watch(config.paths.javascript.general, ['scripts:general']);
+    gulp.watch(config.paths.javascript.watch, ['scripts']);
     gulp.watch(config.base.src + config.paths.images.src, ['images']);
     gulp.watch(config.paths.html.watch, ['html']);
 });
@@ -207,42 +185,13 @@ gulp.task('default', function() {
 //----------------------------------------------------
 
 gulp.task('dist', ['clean'], function() {
-    gulp.start('scss', 'scripts:general', 'images', 'html');
+    gulp.start('scss', 'scripts', 'images', 'html');
 });
 
-gulp.task('package', function () {
-    runSequence(
-        'package-version',
-        'minor-bump'
-    );
-});
-
-gulp.task('package-version', function() {
-    var version = getPackageJsonVersion();
-    return gulp.src( [config.base.dest + '/**/*' ] )
-        .pipe(zip(package.name + '.v' + version + '.zip'))
-        .pipe(gulp.dest(config.base.packages));
-});
-
-gulp.task('patch-bump', function() {
-    return gulp.src('./package.json')
-        .pipe(bump({type:'patch'}))
-        .pipe(gulp.dest('./'));
-});
-
-gulp.task('minor-bump', function() {
-    return gulp.src('./package.json')
-        .pipe(bump({type:'minor'}))
-        .pipe(gulp.dest('./'));
-});
 
 //----------------------------------------------------
 //  utils
 //----------------------------------------------------
-
-function getPackageJsonVersion () {
-    return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-};
 
 var reportError = function (error) {
     var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
@@ -254,13 +203,6 @@ var reportError = function (error) {
     }).write(error);
 
     plugins.util.beep(); // Beep 'sosumi' again
-
-    // Inspect the error object
-    //console.log(error);
-
-    // Easy error reporting
-    //console.log(error.toString());
-
     // Pretty error reporting
     var report = '';
     var chalk = plugins.util.colors.white.bgRed;
