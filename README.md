@@ -1,5 +1,7 @@
 # Accessible Horse Tornado
 
+See a demo: http://pdincubus.github.io/Accessible-Horse-Tornado/
+
 ##Prerequisites
 
 * Gulp
