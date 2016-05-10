@@ -1,6 +1,10 @@
-# Accessible Horse Tornado
+#Accessible Horse Tornado
 
-See a demo: http://pdincubus.github.io/Accessible-Horse-Tornado/
+(See a demo)[http://pdincubus.github.io/Accessible-Horse-Tornado/]
+
+##Issues
+
+If you spot any accessibility/functionality issues, please raise a (GitHub issue for this project)[https://github.com/pdincubus/Accessible-Horse-Tornado/issues]: 
 
 ##Prerequisites
 
