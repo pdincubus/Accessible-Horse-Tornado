@@ -11,7 +11,7 @@ $mq-breakpoints: (
 @import 'third-party/_mq';
 @import 'third-party/_mixins';
 @import 'third-party/_helpers';
-@import 'third-party/_resetalize';
+@import 'third-party/_reset';
 
 //start of custom stuff
 @import 'global/_variables';
@@ -19,7 +19,4 @@ $mq-breakpoints: (
 
 //base typography and links styles, global buttons etc
 @import 'global/_base';
-
-//site header and footer
-@import 'global/_header';
-@import 'global/_footer';
+@import 'global/_horse-tornado';
