@@ -64,7 +64,7 @@ input[type=checkbox] + label,
 input[type=radio] + label,
 label {
     &:focus {
-        outline: 3px inset $accessibility;
+        outline: 3px solid $accessibility;
     }
 
     &.no-focus {
