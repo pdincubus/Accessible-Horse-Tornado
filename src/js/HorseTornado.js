@@ -53,7 +53,7 @@
                 }, 250, 'resizeHandler');
             });
 
-            this.$element.find(this.options.slide).eq(0).addClass('active');
+            this.$element.find(this.options.slide).eq(0).addClass('active').attr('aria-disabled', false).attr('aria-hidden', false);
             this.$element.find('.' + this.options.navDirect + ' > li').first().find('.' + this.options.navDirectButton).addClass('active');
             this.$element.find(this.options.navPrev).addClass('disabled').attr('aria-disabled', true).attr('disabled', true);
 
@@ -73,6 +73,7 @@
 
         resetHorseTornado: function() {
             this.currentSlide = 0;
+            this.$element.find(this.options.slide).eq(0).addClass('active').attr('aria-disabled', false).attr('aria-hidden', false);
             this.$element.find(this.options.slideInnerContainer).attr('style', '');
             this.setDirectNavActive(0);
             this.setNavDisabled('prev');
