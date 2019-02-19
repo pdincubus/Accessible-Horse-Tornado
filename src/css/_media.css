@@ -1,0 +1,11 @@
+@custom-media --mobile (width < 535px);
+@custom-media --mobile-large (535px <= width < 801px);
+@custom-media --until-tablet (width < 801px);
+@custom-media --tablet (801px <= width < 1025px);
+@custom-media --from-tablet (width >= 801px);
+@custom-media --until-desktop (width < 1025px);
+@custom-media --desktop (width >= 1025px);
+@custom-media --desktop-large (1366px <= width < 1680px);
+@custom-media --until-desktop-wide (width < 1680px);
+@custom-media --desktop-wide (1680px <= width < 2560px);
+@custom-media --desktop-huge (width >= 2560px);

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js basic-exp">
+    <head>
+        <meta charset="utf-8">
+        <title>Accessible Horse Tornado</title>
+
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <main>
+            <div
+                class="horse-tornado"
+                aria-labelledby="horse-tornado-title"
+            >
+                <h2 class="u-vh" id="horse-tornado-title">
+                    The Horse Tornado Title
+                </h2>
+
+                <div
+                    class="horse-tornado__slides"
+                    aria-live="polite"
+                >
+                    <div
+                        class="horse-tornado__slide"
+                        data-slide="1"
+                        aria-hidden="false"
+                    >
+                        <div class="horse-tornado__content">
+                            Slide 1
+                        </div>
+                    </div>
+
+                    <div
+                        class="horse-tornado__slide"
+                        data-slide="2"
+                        aria-hidden="true"
+                    >
+                        <div class="horse-tornado__content">
+                            Slide 2
+                        </div>
+                    </div>
+
+                    <div
+                        class="horse-tornado__slide"
+                        data-slide="3"
+                        aria-hidden="true"
+                    >
+                        <div class="horse-tornado__content">
+                            Slide 3
+                        </div>
+                    </div>
+
+                    <div
+                        class="horse-tornado__slide"
+                        data-slide="4"
+                        aria-hidden="true"
+                    >
+                        <div class="horse-tornado__content">
+                            Slide 4
+                        </div>
+                    </div>
+
+                    <div
+                        class="horse-tornado__slide"
+                        data-slide="5"
+                        aria-hidden="true"
+                    >
+                        <div class="horse-tornado__content">
+                            Slide 5
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="horse-tornado__nav">
+                    <button
+                        type="button"
+                        class="horse-tornado__button horse-tornado__button--prev"
+                    >
+                            Go to the previous slide
+                    </button>
+
+                    <button
+                        type="button"
+                        class="horse-tornado__button horse-tornado__button--next"
+                    >
+                            Go to the next slide
+                    </button>
+
+                    <button
+                        type="button"
+                        class="horse-tornado__button horse-tornado__button--stop"
+                    >
+                        Stop slides automatically progressing
+                    </button>
+
+                    <button
+                        type="button"
+                        class="horse-tornado__button horse-tornado__button--start"
+                    >
+                        Start slides automatically progressing again
+                    </button>
+                </nav>
+            </div>
+        </main>
+
+        <script src="js/init.js"></script>
+    </body>
+</html>

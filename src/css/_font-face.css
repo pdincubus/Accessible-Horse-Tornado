@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Plusnet Creighton';
+    src:
+        url(../fonts/plusnetcreightonprobold-webfont.woff2) format('woff2'),
+        url(../fonts/plusnetcreightonprobold-webfont.woff) format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Plusnet Creighton';
+    src:
+        url(../fonts/plusnetcreightonprobook-webfont.woff2) format('woff2'),
+        url(../fonts/plusnetcreightonprobook-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
